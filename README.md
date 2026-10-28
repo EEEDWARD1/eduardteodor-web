@@ -4,7 +4,7 @@ This is the repository for [dev.eduardteodor.co.uk](https://dev.eduardteodor.co.
 This is a part of a bigger collection of repositories that builds my personal ecosystem.
 - [eduardteodor-web](https://github.com/EEEDWARD1/eduardteodor-web) ← you are here!
 - [eduardteodor-api](https://github.com/EEEDWARD1/eduardteodor-api)
-- [eduardteodor-web](https://github.com/EEEDWARD1/eduardteodor-cms)
+- [eduardteodor-cms](https://github.com/EEEDWARD1/eduardteodor-cms)
 
 ## Current Pages
 Currently implemented:
