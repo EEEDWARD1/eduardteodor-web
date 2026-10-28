@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
     >
-      <body className={`${inter.className} mx-auto flex min-h-screen w-full max-w-4xl flex-col bg-[#fffdf8] text-slate-900`}>
+      <body className={`${inter.className} mx-auto flex min-h-screen w-full max-w-4xl flex-col bg-[#fffdf8] p-4 text-slate-900 sm:p-0`}>
         <Nav />
         <div className="flex-1">{children}</div>
         <Footer />
