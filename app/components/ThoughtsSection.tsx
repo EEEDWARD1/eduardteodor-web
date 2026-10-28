@@ -8,7 +8,7 @@ export default function ThoughtsSection() {
     return (
         <section className="mt-20 border border-neutral-300 bg-white" aria-labelledby="thoughts-heading">
             <h2 id="thoughts-heading" className="border-b border-neutral-300 text-2xl font-semibold tracking-tight text-slate-950">
-                <Link href="/thoughts" className="flex items-center justify-between px-5 py-4 no-underline transition-colors hover:bg-orange-50 hover:text-[#FE5F55] hover:no-underline">
+                <Link href="/thoughts" style={{ textDecoration: "none" }} className="flex items-center justify-between px-5 py-4 no-underline transition-colors hover:bg-orange-50 hover:text-[#FE5F55] hover:no-underline">
                     <span className="border-l-4 border-[#FE5F55] pl-3">Thoughts</span>
                     <ExternalLinkIcon />
                 </Link>
