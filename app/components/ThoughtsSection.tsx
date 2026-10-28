@@ -1,33 +1,26 @@
 import { posts } from "@/app/data/posts";
+import Link from "next/link";
 
 export default function ThoughtsSection() {
     const thoughts = posts.filter((post) => post.type === "thought");
 
     return (
-        <section aria-labelledby="thoughts-heading">
-            <h2 id="thoughts-heading">Thoughts</h2>
+        <section className="mt-20 border border-neutral-300 bg-white" aria-labelledby="thoughts-heading">
+            <h2 id="thoughts-heading" className="border-b border-neutral-300 text-2xl font-semibold tracking-tight text-slate-950">
+                <Link href="/thoughts" className="flex items-center justify-between px-5 py-4 no-underline transition-colors hover:bg-orange-50 hover:text-[#FE5F55] hover:no-underline">
+                    <span className="border-l-4 border-[#FE5F55] pl-3">Thoughts</span>
+                    <span aria-hidden="true" className="text-lg font-medium">↗</span>
+                </Link>
+            </h2>
 
-            <ul>
+            <ul className="space-y-4 p-5 text-lg">
                 {thoughts.map((thought) => (
-                    <li key={thought.slug}>
-                        <article>
-                            <h3>{thought.title}</h3>
-                            <p>{thought.description}</p>
-
-                            {thought.href && (
-                                <p>
-                                    <a href={thought.href}>Read more</a>
-                                </p>
-                            )}
-
-                            {thought.tags.length > 0 && (
-                                <ul aria-label={`Tags for ${thought.title}`}>
-                                    {thought.tags.map((tag) => (
-                                        <li key={tag}>{tag}</li>
-                                    ))}
-                                </ul>
-                            )}
-                        </article>
+                    <li key={thought.slug} className="flex list-none items-baseline justify-between gap-6 rounded-sm px-2 py-1 transition-colors hover:bg-orange-50">
+                        {thought.href ? (
+                            <a href={thought.href}>{thought.title}</a>
+                        ) : (
+                            <span>{thought.title}</span>
+                        )}
                     </li>
                 ))}
             </ul>

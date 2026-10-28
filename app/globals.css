@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+a {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: black;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    color: #fe5f55;
+    text-decoration-color: #fe5f55;
+}
