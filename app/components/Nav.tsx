@@ -14,7 +14,7 @@ export default function Nav(){
     const isMenuOpen = menuOpen;
 
     return(
-        <header className="my-4 border border-neutral-300 bg-white text-slate-900">
+        <header className="my-4 border-neutral border text-slate-900">
             <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between">
                 <Link href="/" style={{ textDecoration: "none" }} className="border-r border-neutral-300 px-5 py-4 text-lg font-semibold tracking-tight text-slate-900 no-underline transition-colors hover:text-[#FE5F55] hover:no-underline">
                     Eduard Teodor
