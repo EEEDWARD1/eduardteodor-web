@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-a {
+a:not(.no-underline) {
     color: black;
     font-weight: bold;
     text-decoration: underline;
@@ -8,7 +8,7 @@ a {
     text-underline-offset: 2px;
 }
 
-a:hover {
+a:not(.no-underline):hover {
     color: #fe5f55;
     text-decoration-color: #fe5f55;
 }

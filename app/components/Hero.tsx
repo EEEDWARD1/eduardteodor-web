@@ -42,6 +42,7 @@ export default function Hero() {
                     href="https://github.com/EEEDWARD1"
                     target="_blank"
                     rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
                     className="inline-flex items-center gap-3 border border-neutral-300 bg-white px-4 py-3 text-slate-900 no-underline transition-colors hover:border-[#FE5F55] hover:bg-orange-50 hover:text-slate-900 hover:no-underline"
                 >
                     <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-current">
@@ -53,6 +54,7 @@ export default function Hero() {
                     href="https://www.linkedin.com/in/eduardteodor"
                     target="_blank"
                     rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
                     className="inline-flex items-center gap-3 border border-neutral-300 bg-white px-4 py-3 text-slate-900 no-underline transition-colors hover:border-[#FE5F55] hover:bg-orange-50 hover:text-slate-900 hover:no-underline"
                 >
                     <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5 fill-current">
