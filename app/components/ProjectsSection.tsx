@@ -6,7 +6,7 @@ export default function ProjectsSection() {
     const projects = posts.filter((post) => post.type === "project");
 
     return (
-        <section className="mt-20 border border-neutral-300 bg-white" aria-labelledby="projects-heading">
+        <section className="mt-8 border" aria-labelledby="projects-heading">
             <h2 id="projects-heading" className="border-b border-neutral-300 text-2xl font-semibold tracking-tight text-slate-950">
                 <Link href="/projects" style={{ textDecoration: "none" }} className="flex items-center justify-between px-5 py-4 no-underline transition-colors hover:bg-orange-50 hover:text-[#FE5F55] hover:no-underline">
                     <span className="border-l-4 border-[#FE5F55] pl-3">Projects</span>
@@ -14,7 +14,7 @@ export default function ProjectsSection() {
                 </Link>
             </h2>
 
-            <ul className="space-y-10 p-5">
+            <ul className="space-y-10 p-4">
                 {projects.map((project) => (
                     <li key={project.slug} className="list-none">
                         <article>
