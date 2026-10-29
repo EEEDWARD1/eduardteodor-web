@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <div>
       <main>
-          <Hero />
-          <ProjectsSection />
-          <ThoughtsSection />
+        <Hero />
+        <ProjectsSection />
+        <ThoughtsSection />
       </main>
     </div>
   );
