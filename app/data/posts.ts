@@ -15,7 +15,8 @@ export const posts: readonly Posts[] = [
     slug: "eduardteodor-co-uk",
     title: "eduardteodor.co.uk",
     description: "This site, built with Next.js and TypeScript.",
-    content: "lorem ipsum blagh blah blah md file content woah crazy!",
+    image: "https://photos.eduardteodor.co.uk/CPConsultancyHero.webp",
+    content: "lorem ipsum blah blah blah md file content woah crazy!",
     href: "https://github.com/EEEDWARD1/EduardTeodor.co.uk",
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
@@ -35,7 +36,7 @@ export const posts: readonly Posts[] = [
     title: "Adding analytics to my site",
     description:
       "Integrating Microsoft Clarity to understand visitor behaviour and improve my portfolio through real usage data.",
-    content: "lorem ipsum blagh blah blah md file content woah crazy!",
+    content: "lorem ipsum blah blah blah md file content woah crazy!",
     href: "https://eduardteodor.co.uk/thoughts/what-i-learned-from-adding-behaviour-analytics-to-my-personal-website",
     tags: ["Writing"],
   },
