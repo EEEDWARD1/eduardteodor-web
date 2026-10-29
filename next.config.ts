@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: "export",
+  allowedDevOrigins: ["192.168.1.137"],
 
   cacheComponents: false,
   partialPrefetching: false,
-  images:{
+  images: {
     unoptimized: true,
   },
   turbopack: {

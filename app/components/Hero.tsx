@@ -3,21 +3,25 @@ import LinkedInIcon from "@/app/components/icons/LinkedInIcon";
 
 export default function Hero() {
   return (
-    <section className="mt-4">
-      <div className="ml-2 mr-2">
-        <h1 className="text-5xl font-bold tracking-tight decoration-[#FE5F55] decoration-4 underline underline-offset-8 sm:text-6xl">
+    <section className="mt-4 md:mt-8">
+      <div className="max-w-4xl md:mx-3">
+        {/* Heading */}
+        <h1
+          className="w-fit border-b-4 border-accent pb-2 text-5xl font-bold tracking-tight
+        text-foreground sm:text-6xl md:text-7xl"
+        >
           Hi, I&#39;m Ed.
         </h1>
-        <div className="mt-8 space-y-5 text-lg leading-relaxed text-neutral-900">
-          <p className="text-2xl">
+        <div className="mt-8 space-y-5">
+          <p className="text-xl leading-relaxed font-medium md:text-2xl">
             I&#39;m a First-Class Honours Computer Science graduate with an
             interest in technology, data, business processes and building
             practical solutions.
           </p>
-          <p className="text-base leading-7 text-zinc-900 md:text-lg">
+          <p className="text-base leading-relaxed text-neutral-800 md:text-lg">
             Based in London, I graduated from{" "}
             <a
-              className="font-bold underline"
+              className="underline decoration-neutral-400 underline-offset-4 transition-colors hover:text-accent"
               href="https://www.citystgeorges.ac.uk/"
               target="_blank"
               rel="noopener noreferrer"
@@ -29,26 +33,33 @@ export default function Hero() {
           </p>
         </div>
       </div>
-      <nav aria-label="Social profiles" className="mt-8 flex flex-wrap gap-3">
+      <nav
+        aria-label="Social profiles"
+        className="mt-4 md:mt-8 flex flex-wrap gap-3"
+      >
         <a
           href="https://github.com/EEEDWARD1"
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
-          className="inline-flex items-center gap-3 border px-4 py-3 text-slate-900 no-underline transition-colors hover:border-[#FE5F55] hover:bg-orange-50 hover:text-slate-900 hover:no-underline"
+          className="flex items-center gap-2 border border-neutral-400 px-4 py-2 text-sm font-medium
+          text-foreground transition-colors hover:border-accent hover:bg-orange-50
+          hover:text-accent"
         >
           <GitHubIcon />
-          GitHub
+          <span className="hidden md:inline">GitHub</span>
         </a>
         <a
           href="https://www.linkedin.com/in/eduardteodor"
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
-          className="inline-flex items-center gap-3 border px-4 py-3 text-slate-900 no-underline transition-colors hover:border-[#FE5F55] hover:bg-orange-50 hover:text-slate-900 hover:no-underline"
+          className="flex items-center gap-2 border border-neutral-400 px-4 py-2 text-sm font-medium
+          text-foreground transition-colors hover:border-accent hover:bg-orange-50
+          hover:text-accent"
         >
           <LinkedInIcon />
-          LinkedIn
+          <span className="hidden md:inline">LinkedIn</span>
         </a>
       </nav>
     </section>
