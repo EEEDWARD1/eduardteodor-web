@@ -3,6 +3,7 @@ export type Posts = {
   slug: string;
   title: string;
   description: string;
+  image?: string;
   content: string;
   href: string | null;
   tags: readonly string[];
