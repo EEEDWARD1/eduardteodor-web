@@ -20,20 +20,22 @@ export const posts: readonly Posts[] = [
   },
   {
     type: "project",
-    slug: "applytrail",
-    title: "applytrail.co.uk",
-    description: "Application tracker built for myself!",
+    slug: "CP Consultancy Services — Consultancy Website",
+    title: "CP Consultancy Services — Consultancy Website",
+    description:
+      "Designed and developed a modern consultancy website that strengthens the company's online presence.",
     content: "lorem ipsum blah blah blah",
-    href: "https://applytrail.co.uk",
+    href: "https://eduardteodor.co.uk/projects/cgu-construction",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", ".NET"],
   },
   {
     type: "thought",
-    slug: "lorem-ipsum",
-    title: "Lorem ipsum",
-    description: "A short preview of this thought.",
+    slug: "adding-analytics-to-my-site",
+    title: "Adding analytics to my site",
+    description:
+      "Integrating Microsoft Clarity to understand visitor behaviour and improve my portfolio through real usage data.",
     content: "lorem ipsum blagh blah blah md file content woah crazy!",
-    href: "",
+    href: "https://eduardteodor.co.uk/thoughts/what-i-learned-from-adding-behaviour-analytics-to-my-personal-website",
     tags: ["Writing"],
   },
 ];
