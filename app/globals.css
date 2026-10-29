@@ -1,14 +1,34 @@
 @import "tailwindcss";
 
-a:not(.no-underline) {
-    color: black;
-    font-weight: bold;
-    text-decoration: underline;
-    text-decoration-color: black;
-    text-underline-offset: 2px;
+/* Design tokens */
+@theme {
+  --color-accent: #fe5f55;
+  --color-background: #fffcf7;
+  --color-foreground: #181b28;
+  --color-border: #d4d4d4;
 }
 
-a:not(.no-underline):hover {
-    color: #fe5f55;
-    text-decoration-color: #fe5f55;
+/* Global defaults */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: white;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
