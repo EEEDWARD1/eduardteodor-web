@@ -15,8 +15,8 @@ export default function Hero() {
         <div className="mt-8 space-y-5">
           <p className="text-xl leading-relaxed font-medium md:text-2xl">
             I&#39;m a First-Class Honours Computer Science graduate with an
-            interest in technology, data, business processes and building
-            practical solutions.
+            interest in technology, data, business processes and practical
+            solutions.
           </p>
           <p className="text-base leading-relaxed text-neutral-800 md:text-lg">
             Based in London, I graduated from{" "}
