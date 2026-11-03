@@ -40,3 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .idea/
+
+# PostHog wizard artifacts
+.posthog-wizard-cache/
+
+# Public analytics configuration template
+!.env.example

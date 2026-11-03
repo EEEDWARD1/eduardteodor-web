@@ -60,8 +60,12 @@ Builds fail if the API cannot be reached or returns invalid data, so a failed bu
 
 ## Analytics and privacy
 
-Set `NEXT_PUBLIC_CLARITY_PROJECT_ID` as a variable in the GitHub `production` environment. The production deployment job reads it during the build and embeds the public project ID into the static site. Local development does not run Clarity. If the variable is missing, analytics stays disabled.
+PostHog replaces Microsoft Clarity. Add `NEXT_PUBLIC_POSTHOG_PROJECT_ID` as a variable in GitHub’s `production` environment, containing the public project token (not the numeric project ID). The production build also reads `NEXT_PUBLIC_POSTHOG_HOST`, defaulting to this project’s EU ingestion host, `https://eu.i.posthog.com`.
 
-Clarity loads only after a visitor accepts analytics. The consent banner offers equally prominent accept and reject buttons and remembers the decision for 180 days. Cookie settings in the footer lets visitors change their choice; rejecting after acceptance reloads the page to unload the recorder. Advertising storage consent is always denied. The privacy policy is available at `/privacy`.
+For local configuration, copy `.env.example` to `.env.local` and enter the project token. Local development and builds without a project token do not enable analytics. Public variables are embedded during the build, so rebuild and redeploy after changing them. PR builds do not use the protected production environment.
 
-In the Clarity project, configure cookie consent as required and check the project's privacy and masking settings. Review the policy against the services and retention settings you actually use. Rebuild and redeploy after changing the project ID. Pull requests and manual runs on other branches build without production environment access or Clarity tracking. On main, the validation job runs lint, then the protected deployment job builds with the production variable and deploys the site.
+`instrumentation-client.ts` starts PostHog only after analytics consent. It captures initial and client-side navigation pageviews, including UTM parameters present in tracked URLs. Session recording, surveys, and general interaction autocapture are disabled. The wizard also added consent-gated error reporting, selected outbound-link events, and successful email-copy events and logs; copied email text is not sent.
+
+The cookie banner remembers the decision for 180 days and keeps the dark backdrop. Cookie settings in the footer lets visitors change their choice. Withdrawal opts the browser out and reloads the page. A new consent storage key, `analytics-consent-posthog-v1`, ensures an old Clarity acceptance does not automatically enable PostHog. The provider and purposes are explained at `/privacy`.
+
+To check UTM tracking after deployment, visit `https://eduardteodor.co.uk/?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio`, accept analytics, and inspect the `$pageview` event in PostHog. Declined visits are not captured. If a visitor navigates away from a tagged URL before accepting, those original parameters may not be available to the SDK.
