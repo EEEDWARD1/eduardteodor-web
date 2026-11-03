@@ -1,16 +1,22 @@
 import { getPosts, getPostPath } from "@/app/data/posts";
 import Link from "next/link";
+import PostGrid from "@/app/components/PostGrid";
 import Image from "next/image";
 import ExternalLinkIcon from "@/app/components/icons/ExternalLinkIcon";
 
 export default async function ProjectsSection({
   limit,
   tagLimit,
+  variant = "compact",
 }: {
   limit?: number;
   tagLimit?: number;
+  variant?: "compact" | "full";
 }) {
   const allProjects = (await getPosts()).filter((post) => post.postType === 0);
+  if (variant === "full") {
+    return <PostGrid posts={allProjects} labelledBy="projects-page-heading" />;
+  }
   const projects =
     limit === undefined ? allProjects : allProjects.slice(0, limit);
 

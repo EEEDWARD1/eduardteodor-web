@@ -1,9 +1,19 @@
 import { getPosts, getPostPath } from "@/app/data/posts";
 import Link from "next/link";
+import PostGrid from "@/app/components/PostGrid";
 import ExternalLinkIcon from "@/app/components/icons/ExternalLinkIcon";
 
-export default async function ThoughtsSection({ limit }: { limit?: number }) {
+export default async function ThoughtsSection({
+  limit,
+  variant = "compact",
+}: {
+  limit?: number;
+  variant?: "compact" | "full";
+}) {
   const allThoughts = (await getPosts()).filter((post) => post.postType === 1);
+  if (variant === "full") {
+    return <PostGrid posts={allThoughts} labelledBy="thoughts-page-heading" />;
+  }
   const thoughts =
     limit === undefined ? allThoughts : allThoughts.slice(0, limit);
 
