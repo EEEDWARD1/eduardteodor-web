@@ -60,8 +60,8 @@ Builds fail if the API cannot be reached or returns invalid data, so a failed bu
 
 ## Analytics and privacy
 
-Set `NEXT_PUBLIC_CLARITY_PROJECT_ID` as a variable in the GitHub `production` environment. The build job reads it and embeds the public project ID into the static site. Local development does not run Clarity. If the variable is missing, analytics stays disabled.
+Set `NEXT_PUBLIC_CLARITY_PROJECT_ID` as a variable in the GitHub `production` environment. The production deployment job reads it during the build and embeds the public project ID into the static site. Local development does not run Clarity. If the variable is missing, analytics stays disabled.
 
 Clarity loads only after a visitor accepts analytics. The consent banner offers equally prominent accept and reject buttons and remembers the decision for 180 days. Cookie settings in the footer lets visitors change their choice; rejecting after acceptance reloads the page to unload the recorder. Advertising storage consent is always denied. The privacy policy is available at `/privacy`.
 
-In the Clarity project, configure cookie consent as required and check the project's privacy and masking settings. Review the policy against the services and retention settings you actually use. Rebuild and redeploy after changing the project ID. The build job now uses the `production` environment too, so any environment protection rules also apply to builds.
+In the Clarity project, configure cookie consent as required and check the project's privacy and masking settings. Review the policy against the services and retention settings you actually use. Rebuild and redeploy after changing the project ID. Pull requests and manual runs on other branches build without production environment access or Clarity tracking. On main, the validation job runs lint, then the protected deployment job builds with the production variable and deploys the site.
