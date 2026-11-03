@@ -57,3 +57,11 @@ The homepage, project/thought listings, and detail pages fetch posts during the 
 Post content is rendered as Markdown; raw HTML is ignored. Listing titles open `/projects/[slug]` or `/thoughts/[slug]`. An optional external `href` appears separately on the detail page.
 
 Builds fail if the API cannot be reached or returns invalid data, so a failed build does not deploy empty replacement content. An empty API collection is valid. Published content changes require a rebuild and redeploy; the workflow runs for frontend pull requests and pushes to main, or manually from the Actions tab.
+
+## Analytics and privacy
+
+Set `NEXT_PUBLIC_CLARITY_PROJECT_ID` as a variable in the GitHub `production` environment. The build job reads it and embeds the public project ID into the static site. Local development does not run Clarity. If the variable is missing, analytics stays disabled.
+
+Clarity loads only after a visitor accepts analytics. The consent banner offers equally prominent accept and reject buttons and remembers the decision for 180 days. Cookie settings in the footer lets visitors change their choice; rejecting after acceptance reloads the page to unload the recorder. Advertising storage consent is always denied. The privacy policy is available at `/privacy`.
+
+In the Clarity project, configure cookie consent as required and check the project's privacy and masking settings. Review the policy against the services and retention settings you actually use. Rebuild and redeploy after changing the project ID. The build job now uses the `production` environment too, so any environment protection rules also apply to builds.
