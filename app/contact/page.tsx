@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ExternalLinkIcon from "@/app/components/icons/ExternalLinkIcon";
 import { socialLinks } from "@/app/data/social-links";
 import CopyEmailButton from "@/app/components/CopyEmailButton";
@@ -95,6 +96,54 @@ export default function ContactsPage() {
           ))}
         </ul>
       </div>
+      <section
+        aria-labelledby="explore-heading"
+        className="min-w-0 lg:col-span-2"
+      >
+        <h2
+          id="explore-heading"
+          className="text-lg font-semibold tracking-tight"
+        >
+          Explore more
+        </h2>
+        <p className="mt-1 mb-4 text-sm text-neutral-600">
+          A little more about what I do.
+        </p>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <Link
+            href="/projects"
+            className="group flex min-w-0 items-center justify-between gap-4 border border-border px-4 py-3 no-underline! transition-colors hover:bg-orange-50"
+          >
+            <div className="min-w-0">
+              <h3 className="font-semibold text-foreground transition-colors group-hover:text-accent">
+                Projects
+              </h3>
+              <p className="mt-1 text-sm text-neutral-600">
+                Things I&#39;ve built and worked on.
+              </p>
+            </div>
+            <span className="shrink-0 transition-colors group-hover:text-accent">
+              <ExternalLinkIcon />
+            </span>
+          </Link>
+          <Link
+            href="/thoughts"
+            className="group flex min-w-0 items-center justify-between gap-4 border border-border px-4 py-3 no-underline! transition-colors hover:bg-orange-50"
+          >
+            <div className="min-w-0">
+              <h3 className="font-semibold text-foreground transition-colors group-hover:text-accent">
+                Thoughts
+              </h3>
+              <p className="mt-1 text-sm text-neutral-600">
+                Things I&#39;ve learned along the way.
+              </p>
+            </div>
+            <span className="shrink-0 transition-colors group-hover:text-accent">
+              <ExternalLinkIcon />
+            </span>
+          </Link>
+        </div>
+      </section>
     </section>
   );
 }
