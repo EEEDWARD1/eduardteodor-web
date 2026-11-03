@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CookieSettingsButton } from "@/app/components/ClarityAnalytics";
+import { CookieSettingsButton } from "@/app/components/AnalyticsConsent";
 import { socialLinks } from "@/app/data/social-links";
 
 export default function Footer() {
