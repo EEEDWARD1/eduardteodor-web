@@ -7,8 +7,8 @@ export default function Home() {
     <div>
       <main>
         <Hero />
-        <ProjectsSection />
-        <ThoughtsSection />
+        <ProjectsSection limit={3} tagLimit={3} />
+        <ThoughtsSection limit={3} />
       </main>
     </div>
   );

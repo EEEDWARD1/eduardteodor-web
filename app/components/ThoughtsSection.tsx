@@ -1,9 +1,11 @@
-import { posts } from "@/app/data/posts";
+import { getPosts, getPostPath } from "@/app/data/posts";
 import Link from "next/link";
 import ExternalLinkIcon from "@/app/components/icons/ExternalLinkIcon";
 
-export default function ThoughtsSection() {
-  const thoughts = posts.filter((post) => post.type === "thought");
+export default async function ThoughtsSection({ limit }: { limit?: number }) {
+  const allThoughts = (await getPosts()).filter((post) => post.postType === 1);
+  const thoughts =
+    limit === undefined ? allThoughts : allThoughts.slice(0, limit);
 
   return (
     <section
@@ -36,27 +38,25 @@ export default function ThoughtsSection() {
         </Link>
       </h2>
 
-      {/* Thoughts list */}
+      {thoughts.length === 0 && (
+        <p className="px-4 py-3 text-neutral-700">No thoughts published yet.</p>
+      )}
       <ul className="divide-y divide-border">
         {thoughts.map((thought) => (
           <li key={thought.slug} className="list-none">
-            <div className="group flex min-w-0 flex-col gap-1 px-4 py-3 transition-colors hover:bg-orange-50 md:flex-row md:items-center md:gap-3">
+            <div className="group flex min-w-0 flex-col gap-1 px-4 py-3 transition-colors hover:bg-orange-50">
               {/* Title */}
-              <h3 className="min-w-0 text-base font-semibold leading-tight md:max-w-[60%] md:shrink-0 md:truncate md:border-r md:border-border md:pr-3">
-                {thought.href ? (
-                  <a
-                    href={thought.href}
-                    className="no-underline! transition-colors group-hover:text-accent"
-                  >
-                    {thought.title}
-                  </a>
-                ) : (
-                  thought.title
-                )}
+              <h3 className="min-w-0 text-base leading-snug font-medium break-words">
+                <Link
+                  href={getPostPath(thought)}
+                  className="no-underline! transition-colors group-hover:text-accent"
+                >
+                  {thought.title}
+                </Link>
               </h3>
 
               {/* Description */}
-              <p className="min-w-0 line-clamp-2 text-sm leading-snug text-neutral-700 md:flex-1 md:truncate md:text-base">
+              <p className="min-w-0 line-clamp-2 text-sm leading-snug break-words text-neutral-600">
                 {thought.description}
               </p>
             </div>

@@ -1,10 +1,18 @@
-import { posts } from "@/app/data/posts";
+import { getPosts, getPostPath } from "@/app/data/posts";
 import Link from "next/link";
 import Image from "next/image";
 import ExternalLinkIcon from "@/app/components/icons/ExternalLinkIcon";
 
-export default function ProjectsSection() {
-  const projects = posts.filter((post) => post.type === "project");
+export default async function ProjectsSection({
+  limit,
+  tagLimit,
+}: {
+  limit?: number;
+  tagLimit?: number;
+}) {
+  const allProjects = (await getPosts()).filter((post) => post.postType === 0);
+  const projects =
+    limit === undefined ? allProjects : allProjects.slice(0, limit);
 
   return (
     <section
@@ -38,14 +46,16 @@ export default function ProjectsSection() {
         </Link>
       </h2>
 
-      {/* Project rows */}
+      {projects.length === 0 && (
+        <p className="px-4 py-3 text-neutral-700">No projects published yet.</p>
+      )}
       <ul className="divide-y divide-border">
         {projects.map((project) => (
           <li key={project.slug} className="list-none">
             <article
               className={`group grid overflow-hidden transition-colors hover:bg-orange-50 ${
                 project.image
-                  ? "grid-cols-1 md:min-h-37.5 md:grid-cols-[30%_minmax(0,1fr)]"
+                  ? "grid-cols-1 md:min-h-37.5 md:grid-cols-[25%_minmax(0,1fr)]"
                   : "grid-cols-1"
               }`}
             >
@@ -56,28 +66,24 @@ export default function ProjectsSection() {
                     src={project.image}
                     alt={`Screenshot of ${project.title}`}
                     fill
-                    sizes="(max-width: 767px) 100vw, 350px"
+                    sizes="(max-width: 767px) 100vw, 250px"
                     className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               )}
 
               {/* Project information */}
-              <div className="flex min-w-0 flex-col justify-center gap-1.5 px-4 py-3">
+              <div className="flex min-w-0 flex-col justify-center gap-2 px-4 py-3">
                 <h3 className="line-clamp-2 text-base leading-snug font-semibold md:truncate md:text-lg">
-                  {project.href ? (
-                    <a
-                      href={project.href}
-                      className="transition-colors group-hover:text-accent"
-                    >
-                      {project.title}
-                    </a>
-                  ) : (
-                    project.title
-                  )}
+                  <Link
+                    href={getPostPath(project)}
+                    className="transition-colors group-hover:text-accent"
+                  >
+                    {project.title}
+                  </Link>
                 </h3>
 
-                <p className="line-clamp-2 text-sm leading-snug text-neutral-700 md:truncate md:text-base">
+                <p className="line-clamp-2 text-sm leading-snug text-neutral-600 md:text-base">
                   {project.description}
                 </p>
 
@@ -85,16 +91,25 @@ export default function ProjectsSection() {
                 {project.tags.length > 0 && (
                   <ul
                     aria-label={`Technologies for ${project.title}`}
-                    className="flex min-w-0 flex-wrap gap-1.5"
+                    className="flex min-w-0 flex-wrap gap-1.5 [&>li]:max-w-full"
                   >
-                    {project.tags.map((tag) => (
+                    {project.tags.slice(0, tagLimit).map((tag) => (
                       <li
                         key={tag}
-                        className="border border-amber-200 bg-amber-50 px-1.5 py-0.5 text-xs font-medium text-slate-700"
+                        className="border border-neutral-300 bg-neutral-100/60 px-1.5 py-0.5 text-xs font-normal break-words text-neutral-600"
                       >
                         {tag}
                       </li>
                     ))}
+                    {tagLimit !== undefined &&
+                      project.tags.length > tagLimit && (
+                        <li
+                          aria-label={`${project.tags.length - tagLimit} more technologies`}
+                          className="border border-neutral-300 bg-neutral-100/60 px-1.5 py-0.5 text-xs font-normal break-words text-neutral-600"
+                        >
+                          +{project.tags.length - tagLimit}
+                        </li>
+                      )}
                   </ul>
                 )}
               </div>
