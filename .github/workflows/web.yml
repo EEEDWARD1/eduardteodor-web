@@ -49,7 +49,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
         env:
-          NEXT_PUBLIC_CLARITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_CLARITY_PROJECT_ID }}
+          NEXT_PUBLIC_POSTHOG_PROJECT_ID: ${{ vars.NEXT_PUBLIC_POSTHOG_PROJECT_ID }}
+          NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com' }}
       - name: Deploy to Cloudflare Workers
         run: pnpm exec wrangler deploy
         env:
