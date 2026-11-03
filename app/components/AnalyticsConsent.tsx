@@ -12,7 +12,6 @@ import {
 } from "@/app/lib/analytics-consent";
 
 export function CookieSettingsButton() {
-  if (!analyticsEnabled) return null;
   return (
     <button
       type="button"
@@ -25,10 +24,12 @@ export function CookieSettingsButton() {
 }
 
 export default function AnalyticsConsentBanner() {
-  const consent = useSyncExternalStore(
+  const consent = useSyncExternalStore<AnalyticsConsent | undefined>(
     subscribeToAnalyticsConsent,
     getAnalyticsConsent,
-    () => null,
+    // Keep the server and first hydration render identical. Read browser
+    // preferences only once React has hydrated the page.
+    () => undefined,
   );
   const [settingsOpen, setSettingsOpen] = useState(false);
   useEffect(() => {
@@ -42,7 +43,11 @@ export default function AnalyticsConsentBanner() {
     setSettingsOpen(false);
   }
 
-  if (!analyticsEnabled || (consent !== null && !settingsOpen)) return null;
+  if (
+    consent === undefined ||
+    (!settingsOpen && (!analyticsEnabled || consent !== null))
+  )
+    return null;
 
   return (
     <>
@@ -58,11 +63,10 @@ export default function AnalyticsConsentBanner() {
           Optional analytics
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-          With your permission, PostHog measures page visits, campaign link
-          (UTM) sources, selected link clicks, and technical errors to help me
-          improve this site. Session recording is disabled. You can decline and
-          still use everything. Your choice is saved on this device for 180
-          days. Read the{" "}
+          {analyticsEnabled
+            ? "With your permission, PostHog measures page visits, campaign link (UTM) sources, selected interactions, and technical errors to help me improve this site. Session recording is disabled. Choose Accept all to enable analytics, or Essential only to use the site without analytics or UTM tracking."
+            : "Optional analytics is currently disabled. Only essential preference storage is in use."}{" "}
+          Your choice is saved on this device for 180 days. Read the{" "}
           <Link
             href="/privacy"
             className="underline underline-offset-4 hover:text-accent"
@@ -77,14 +81,15 @@ export default function AnalyticsConsentBanner() {
             onClick={() => choose("rejected")}
             className="border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-orange-50 hover:text-accent"
           >
-            Reject analytics
+            Essential only
           </button>
           <button
             type="button"
             onClick={() => choose("accepted")}
-            className="border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-orange-50 hover:text-accent"
+            disabled={!analyticsEnabled}
+            className="border border-border px-4 py-2.5 text-sm font-medium transition-colors enabled:hover:bg-orange-50 enabled:hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Accept analytics
+            Accept all
           </button>
         </div>
       </section>

@@ -37,7 +37,7 @@ export default function PrivacyPage() {
         </p>
         <h2>Optional PostHog analytics</h2>
         <p>
-          If you accept analytics, PostHog measures visits to this portfolio.
+          If you choose Accept all, PostHog measures visits to this portfolio.
           This includes page URLs, campaign parameters such as UTM sources,
           referring websites, browser and device information, selected link
           clicks, successful contact-email copy actions, and technical errors.
@@ -47,11 +47,14 @@ export default function PrivacyPage() {
           optional processing is your consent.
         </p>
         <p>
-          PostHog is not initialized before you accept analytics. Rejecting
-          analytics does not limit access to the site. Session recording,
-          general interaction autocapture, and surveys are disabled. The site
-          does not identify visitors using names or email addresses, and copying
-          the contact email does not send the copied text to PostHog.
+          PostHog is not initialized before you choose Accept all. Choosing
+          Essential only does not limit access to the site and sends no PostHog
+          analytics, UTM events, interaction events, or diagnostic logs. It
+          retains only the preference storage described below for this consent
+          mechanism. Session recording, general interaction autocapture, and
+          surveys are disabled. The site does not identify visitors using names
+          or email addresses, and copying the contact email does not send the
+          copied text to PostHog.
         </p>
         <p>
           After consent, PostHog uses first-party cookies and browser storage to
@@ -87,10 +90,12 @@ export default function PrivacyPage() {
           visit.
         </p>
         <p>
-          Use Cookie settings in the footer to accept or reject analytics at any
-          time. Withdrawing consent opts this browser out of PostHog, clears its
-          analytics persistence, and reloads the page to unload analytics. It
-          does not undo processing that happened before withdrawal or delete
+          Use Cookie settings in the footer to change your choice at any time.
+          Accept all enables the optional analytics described above; Essential
+          only keeps it disabled. Changing from Accept all to Essential only
+          withdraws analytics consent, opts this browser out of PostHog, clears
+          its analytics persistence, and reloads the page to unload analytics.
+          It does not undo processing that happened before withdrawal or delete
           information already received by PostHog. Contact me with any related
           data request.
         </p>
