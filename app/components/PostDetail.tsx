@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Markdown from "react-markdown";
+import MarkdownContent from "@/app/components/MarkdownContent";
 import { getPostPath, type Post } from "@/app/data/posts";
 import TrackedExternalLink from "@/app/components/TrackedExternalLink";
 
@@ -65,9 +65,7 @@ export default function PostDetail({ post }: { post: Post }) {
           </TrackedExternalLink>
         )}
       </header>
-      <div className="post-content mt-6">
-        <Markdown skipHtml>{post.content}</Markdown>
-      </div>
+      <MarkdownContent content={post.content} />
     </article>
   );
 }
