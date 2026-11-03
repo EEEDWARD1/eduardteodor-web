@@ -14,65 +14,57 @@ export default async function ThoughtsSection({
   if (variant === "full") {
     return <PostGrid posts={allThoughts} labelledBy="thoughts-page-heading" />;
   }
-  const thoughts =
-    limit === undefined ? allThoughts : allThoughts.slice(0, limit);
+  const thoughts = allThoughts.slice(0, Math.min(limit ?? 3, 3));
 
   return (
-    <section
-      className="mt-8 border border-neutral-400"
-      aria-labelledby="thoughts-heading"
-    >
-      <h2
-        id="thoughts-heading"
-        className="border-b border-border text-lg font-bold tracking-tight md:text-xl"
-      >
+    <section className="mt-12" aria-labelledby="thoughts-heading">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <h2
+          id="thoughts-heading"
+          className="text-lg font-semibold tracking-tight md:text-xl"
+        >
+          Thoughts
+        </h2>
         <Link
           href="/thoughts"
-          className="group flex items-stretch no-underline!"
+          className="text-sm underline underline-offset-4 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
-          {/* Title cell */}
-          <span className="flex items-center border-r border-border px-3 py-1.5 transition-colors group-hover:bg-orange-50 md:px-6 md:py-2">
-            Thoughts
-          </span>
-
-          {/* Flexible middle cell */}
-          <span
-            className="flex-1 transition-colors group-hover:bg-orange-50"
-            aria-hidden="true"
-          />
-
-          {/* Icon cell */}
-          <span className="flex shrink-0 items-center justify-center border-l border-border px-2 transition-colors group-hover:bg-orange-50 group-hover:text-accent md:px-3">
-            <ExternalLinkIcon />
-          </span>
+          View all thoughts
         </Link>
-      </h2>
-
-      {thoughts.length === 0 && (
-        <p className="px-4 py-3 text-neutral-700">No thoughts published yet.</p>
-      )}
-      <ul className="divide-y divide-border">
-        {thoughts.map((thought) => (
-          <li key={thought.slug} className="list-none">
-            <div className="group flex min-w-0 flex-col gap-1 px-4 py-3 transition-colors hover:bg-orange-50">
-              {/* Title */}
-              <h3 className="min-w-0 text-base leading-snug font-medium break-words">
+      </div>
+      <div className="border border-border">
+        {thoughts.length === 0 ? (
+          <p className="px-4 py-3 text-neutral-700">
+            No thoughts published yet.
+          </p>
+        ) : (
+          <ul className="divide-y divide-border">
+            {thoughts.map((thought) => (
+              <li key={thought.slug}>
                 <Link
                   href={getPostPath(thought)}
-                  className="no-underline! transition-colors group-hover:text-accent"
+                  className="group flex min-w-0 items-start gap-4 px-4 py-3 [overflow-wrap:anywhere] no-underline! transition-colors hover:bg-orange-50 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent"
                 >
-                  {thought.title}
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-base leading-snug font-semibold text-foreground transition-colors group-hover:text-accent">
+                      {thought.title}
+                    </h3>
+                    <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-neutral-600">
+                      {thought.description}
+                    </p>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 transition-colors group-hover:text-accent"
+                  >
+                    <ExternalLinkIcon />
+                  </span>
                 </Link>
-              </h3>
-
-              {/* Description */}
-              <p className="min-w-0 line-clamp-2 text-sm leading-snug break-words text-neutral-600">
-                {thought.description}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </section>
   );
 }
