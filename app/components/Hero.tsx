@@ -13,7 +13,7 @@ export default function Hero() {
           Hi, I&#39;m Ed.
         </h1>
         <div className="mt-8 space-y-5">
-          <p className="text-xl leading-relaxed font-medium md:text-2xl">
+          <p className="text-xl leading-relaxed font-normal md:text-2xl">
             I&#39;m a First-Class Honours Computer Science graduate with an
             interest in technology, data, business processes and building
             practical solutions.

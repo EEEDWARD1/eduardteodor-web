@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { CookieSettingsButton } from "@/app/components/ClarityAnalytics";
 import { socialLinks } from "@/app/data/social-links";
 
 export default function Footer() {
@@ -11,9 +13,16 @@ export default function Footer() {
     >
       <p className="">© {currentYear} Eduard Teodor</p>
       <nav
-        aria-label="Social links"
+        aria-label="Footer links"
         className="flex flex-wrap items-center gap-4"
       >
+        <Link
+          href="/privacy"
+          className="font-medium text-neutral-700 no-underline transition-colors hover:text-accent"
+        >
+          Privacy policy
+        </Link>
+        <CookieSettingsButton />
         {socialLinks.map(({ label, href }) => (
           <a
             key={label}

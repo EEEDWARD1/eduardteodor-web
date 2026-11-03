@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Nav from "@/app/components/Nav";
 import Footer from "@/app/components/Footer";
+import ClarityAnalytics from "@/app/components/ClarityAnalytics";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ClarityAnalytics />
       </body>
     </html>
   );
