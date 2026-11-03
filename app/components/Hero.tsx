@@ -1,5 +1,6 @@
 import GitHubIcon from "@/app/components/icons/GitHubIcon";
 import LinkedInIcon from "@/app/components/icons/LinkedInIcon";
+import TrackedExternalLink from "@/app/components/TrackedExternalLink";
 
 export default function Hero() {
   return (
@@ -37,8 +38,9 @@ export default function Hero() {
         aria-label="Social profiles"
         className="mt-4 md:mt-8 flex flex-wrap gap-3"
       >
-        <a
+        <TrackedExternalLink
           href="https://github.com/EEEDWARD1"
+          linkContext="hero_github"
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
@@ -48,9 +50,10 @@ export default function Hero() {
         >
           <GitHubIcon />
           <span className="hidden md:inline">GitHub</span>
-        </a>
-        <a
+        </TrackedExternalLink>
+        <TrackedExternalLink
           href="https://www.linkedin.com/in/eduardteodor"
+          linkContext="hero_linkedin"
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
@@ -60,7 +63,7 @@ export default function Hero() {
         >
           <LinkedInIcon />
           <span className="hidden md:inline">LinkedIn</span>
-        </a>
+        </TrackedExternalLink>
       </nav>
     </section>
   );

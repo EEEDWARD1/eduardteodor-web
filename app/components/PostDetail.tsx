@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import { getPostPath, type Post } from "@/app/data/posts";
+import TrackedExternalLink from "@/app/components/TrackedExternalLink";
 
 export function postMetadata(post: Post): Metadata {
   const url = getPostPath(post);
@@ -53,12 +54,15 @@ export default function PostDetail({ post }: { post: Post }) {
           </ul>
         )}
         {post.href && (
-          <a
+          <TrackedExternalLink
             href={post.href}
+            linkContext={
+              post.postType === 0 ? "project_detail" : "thought_detail"
+            }
             className="mt-4 inline-block underline underline-offset-4 hover:text-accent"
           >
             Visit {post.postType === 0 ? "project" : "related link"}
-          </a>
+          </TrackedExternalLink>
         )}
       </header>
       <div className="post-content mt-6">
