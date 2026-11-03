@@ -35,56 +35,64 @@ export default function PrivacyPage() {
           </a>{" "}
           for information about its processing and retention.
         </p>
-        <h2>Optional Microsoft Clarity analytics</h2>
+        <h2>Optional PostHog analytics</h2>
         <p>
-          If you accept analytics, Microsoft Clarity collects information about
-          your visit, including pages viewed, clicks, scrolling, browser and
-          device information, and session recordings. I use this to understand
-          how the site is used and improve its usability. The basis for this
+          If you accept analytics, PostHog measures visits to this portfolio.
+          This includes page URLs, campaign parameters such as UTM sources,
+          referring websites, browser and device information, selected link
+          clicks, successful contact-email copy actions, and technical errors.
+          Requests to the analytics service also expose your IP address to the
+          provider. I use this information to understand where visitors come
+          from, improve the site, and diagnose problems. The basis for this
           optional processing is your consent.
         </p>
         <p>
-          Clarity is not loaded before you accept analytics. Rejecting analytics
-          does not limit access to the site. Advertising storage consent is not
-          granted by this site’s analytics choice. Clarity may use cookies such
-          as <code>_clck</code> and <code>_clsk</code> to associate activity
-          with a visitor or session where permitted by the consent settings.
+          PostHog is not initialized before you accept analytics. Rejecting
+          analytics does not limit access to the site. Session recording,
+          general interaction autocapture, and surveys are disabled. The site
+          does not identify visitors using names or email addresses, and copying
+          the contact email does not send the copied text to PostHog.
         </p>
         <p>
-          Microsoft receives the analytics information and may process it
-          outside the UK. See the{" "}
-          <a href="https://privacy.microsoft.com/privacystatement">
-            Microsoft Privacy Statement
+          After consent, PostHog uses first-party cookies and browser storage to
+          maintain a pseudonymous visitor identifier, session information, and
+          campaign attribution. It also stores its capture preference. See{" "}
+          <a href="https://posthog.com/docs/libraries/js/persistence">
+            PostHog’s storage documentation
           </a>{" "}
-          and
-          <a href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-cookies">
-            Clarity cookie documentation
-          </a>{" "}
-          for details about its processing, cookies, and international
-          transfers.
+          for details.
         </p>
         <p>
-          Microsoft’s published retention periods include 30 days for ordinary
-          session playback and up to nine months for heatmaps and labelled or
-          favourited sessions. See{" "}
-          <a href="https://learn.microsoft.com/en-us/clarity/setup-and-installation/data-retention">
-            Clarity’s retention documentation
+          Analytics is sent to PostHog’s EU-hosted service. PostHog receives and
+          processes this information as the analytics provider. See the{" "}
+          <a href="https://posthog.com/privacy">PostHog Privacy Policy</a> and{" "}
+          <a href="https://posthog.com/docs/privacy">privacy documentation</a>{" "}
+          for information about its processing and safeguards, including any
+          international transfers.
+        </p>
+        <p>
+          Analytics retention follows the PostHog project’s retention settings.
+          See{" "}
+          <a href="https://posthog.com/docs/settings/projects#events-retention">
+            PostHog’s retention documentation
           </a>{" "}
-          for current details.
+          or contact me for information about data associated with a visit.
         </p>
         <h2>Your cookie choice</h2>
         <p>
           The site saves your analytics choice in your browser’s local storage
-          under <code>analytics-consent-v1</code> for 180 days. This preference
-          storage is used only to remember your decision. If browser storage is
-          unavailable, your decision applies to the current page visit.
+          under <code>analytics-consent-posthog-v1</code> for 180 days. This
+          preference storage is used only to remember your decision. If browser
+          storage is unavailable, your decision applies to the current page
+          visit.
         </p>
         <p>
           Use Cookie settings in the footer to accept or reject analytics at any
-          time. Withdrawing consent clears this site’s Clarity cookies and
-          reloads the page to stop the recorder. It does not undo processing
-          that happened before withdrawal or remove cookies controlled by other
-          domains.
+          time. Withdrawing consent opts this browser out of PostHog, clears its
+          analytics persistence, and reloads the page to unload analytics. It
+          does not undo processing that happened before withdrawal or delete
+          information already received by PostHog. Contact me with any related
+          data request.
         </p>
         <h2>Contacting me</h2>
         <p>
