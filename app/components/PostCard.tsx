@@ -10,10 +10,6 @@ export default function PostCard({
   preview?: boolean;
 }) {
   const Title = preview ? "h3" : "h2";
-  const href =
-    !preview && post.postType === 0 && post.href
-      ? post.href
-      : getPostPath(post);
   const content = (
     <>
       <div className="flex items-start justify-between gap-4">
@@ -63,13 +59,9 @@ export default function PostCard({
   );
   const className =
     "group flex h-full min-w-0 flex-col gap-3 rounded-none border border-border p-4 [overflow-wrap:anywhere] no-underline! transition-colors hover:bg-orange-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
-  return href.startsWith("/") ? (
-    <Link href={href} className={className}>
+  return (
+    <Link href={getPostPath(post)} className={className}>
       {content}
     </Link>
-  ) : (
-    <a href={href} className={className}>
-      {content}
-    </a>
   );
 }
