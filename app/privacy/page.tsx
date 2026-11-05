@@ -39,11 +39,12 @@ export default function PrivacyPage() {
         <p>
           If you choose Accept all, PostHog measures visits to this portfolio.
           This includes page URLs, campaign parameters such as UTM sources,
-          referring websites, browser and device information, selected link
-          clicks, successful contact-email copy actions, and technical errors.
-          Requests to the analytics service also expose your IP address to the
-          provider. I use this information to understand where visitors come
-          from, improve the site, and diagnose problems. The basis for this
+          referring websites, browser and device information, page departures,
+          automatically captured interactions such as clicks and form
+          submissions, successful contact-email copy actions, and technical
+          errors. Requests to the analytics service also expose your IP address
+          to the provider. I use this information to understand where visitors
+          come from, improve the site, and diagnose problems. The basis for this
           optional processing is your consent.
         </p>
         <p>
@@ -51,10 +52,9 @@ export default function PrivacyPage() {
           Essential only does not limit access to the site and sends no PostHog
           analytics, UTM events, interaction events, or diagnostic logs. It
           retains only the preference storage described below for this consent
-          mechanism. Session recording, general interaction autocapture, and
-          surveys are disabled. The site does not identify visitors using names
-          or email addresses, and copying the contact email does not send the
-          copied text to PostHog.
+          mechanism. Session recording and surveys are disabled. The site does
+          not identify visitors using names or email addresses, and copying the
+          contact email does not send the copied text to PostHog.
         </p>
         <p>
           After consent, PostHog uses first-party cookies and browser storage to

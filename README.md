@@ -64,7 +64,7 @@ PostHog replaces Microsoft Clarity. Add `NEXT_PUBLIC_POSTHOG_PROJECT_ID` as a va
 
 For local configuration, copy `.env.example` to `.env.local` and enter the project token. Local development and builds without a project token do not enable analytics. Public variables are embedded during the build, so rebuild and redeploy after changing them. PR builds do not use the protected production environment.
 
-`instrumentation-client.ts` starts PostHog only after analytics consent. It captures initial and client-side navigation pageviews, including UTM parameters present in tracked URLs. Session recording, surveys, and general interaction autocapture are disabled. The wizard also added consent-gated error reporting, selected outbound-link events, and successful email-copy events and logs; copied email text is not sent.
+`instrumentation-client.ts` starts PostHog only after analytics consent. It captures initial and client-side navigation pageviews, including UTM parameters present in tracked URLs, plus `$pageleave` events and `$autocapture` interaction events. Session recording and surveys are disabled. The wizard also added consent-gated error reporting, selected outbound-link events, and successful email-copy events and logs; copied email text is not sent.
 
 The cookie banner remembers the decision for 180 days and keeps the dark backdrop. Cookie settings in the footer lets visitors change their choice. Withdrawal opts the browser out and reloads the page. A new consent storage key, `analytics-consent-posthog-v1`, ensures an old Clarity acceptance does not automatically enable PostHog. The provider and purposes are explained at `/privacy`.
 
